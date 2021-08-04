@@ -1,0 +1,19 @@
+.navbar{
+    background-color: $brokenwhite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    .links{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 40px;
+        a{
+            color: $black;
+            text-decoration: none;
+            letter-spacing: .2em;
+        }
+    }
+}

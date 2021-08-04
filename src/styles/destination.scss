@@ -1,0 +1,45 @@
+.destination{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding: 100px 0;
+    text-align: center;
+    flex-direction: column;
+    background-color: #eeebe3;
+    h1{
+        // margin-bottom: 15px;
+    }
+    .lampungimg{
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+        object-fit: contain;
+    }
+    h5{
+        padding:  0 20px;
+        // background-color: #003366;
+        letter-spacing: .1em;
+    }
+    .frame{
+        width: 100%;
+        height: 200px;
+        .map{
+            width: 100% ;
+            height: 100% ;
+        }
+    }
+    button{
+        border: 0;
+        background-color: whitesmoke;
+        height: 40px;
+        width: 200px;
+        border-radius: 6px;
+        // color: maroon;
+        letter-spacing: .1em;
+        color: maroon;
+        svg{
+            width: 15px;
+        }
+    }
+}

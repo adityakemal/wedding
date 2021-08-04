@@ -1,0 +1,47 @@
+.schedule{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .box{
+        padding: 30px;
+        img{
+            width: 100%;
+            // object-fit: cover;
+            filter: grayscale(1);
+        }
+    }
+    .parents{
+        display: flex;
+        align-items: center;
+        // height: 100%;
+        .bingkai{
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+            border-style: solid;
+            border-color: $darkblue;
+            border-width: 30px 30px 30px 0;
+            color: $black;
+            h2{
+                font-family: 'Stalemate', cursive;
+                font-size: 40px;
+                margin-bottom: 0;
+                font-style: italic;
+            }
+            .and{
+                margin: 20px 0;
+            }
+            small{
+                font-size: 12px;
+                font-style: italic;
+            }
+            p{
+                margin-bottom: 0;
+                text-align: center;
+                font-size: 14px;
+            }
+        }
+
+    }
+}

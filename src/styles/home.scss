@@ -1,0 +1,116 @@
+.home{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: $pastelblue;
+    background-repeat: no-repeat;
+    background-size: 40%, 25%, 30%;
+    background-position: bottom center, bottom left 13%, bottom right 10%;
+    .title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        margin-bottom: 40px;
+        .line{
+            border: .5px solid $brokenwhite;
+            width: 20px;
+            margin: 0 10px;
+        }
+        h4{
+            margin-bottom: 0;
+            line-height: normal;
+            padding: 0;
+        }
+    }
+    h4{
+        letter-spacing: .1em;
+        color: $brokenwhite;
+        padding: 20px;
+        span{
+            color: $darkblue;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+        }
+    }
+    h1{
+        font-family: 'Stalemate', cursive;
+        font-size: 100px;
+        color: 	$black;
+    }
+    .counter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        p{
+            font-size: 30px;
+            // margin-bottom: 0;
+            padding: 0 10px;
+            span{
+                font-weight: 300;
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    .home{
+        background-size: 70%, 35%, 30%;
+        background-position: bottom center, bottom left 0%, bottom right 0%;
+        .title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            margin-bottom: 40px;
+            .line{
+                border: .5px solid $brokenwhite;
+                width: 20px;
+                margin: 0 10px;
+            }
+            h4{
+                margin-bottom: 0;
+                line-height: normal;
+                padding: 0;
+            }
+        }
+        h4{
+            letter-spacing: .1em;
+            color: $brokenwhite;
+            padding: 0 40px 70px;
+            font-size: 16px;
+            // width: 200px;
+            span{
+                color: $darkblue;
+                text-transform: uppercase;
+                letter-spacing: .2em;
+            }
+        }
+        h1{
+            font-family: 'Stalemate', cursive;
+            font-size: 80px;
+            color: 	$black;
+        }
+        .counter{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            p{
+                font-size: 25px;
+                // margin-bottom: 0;
+                padding: 0 10px;
+                span{
+                    font-weight: 300;
+                    font-size: 12px;
+                }
+            }
+        }
+    
+    }    
+}
