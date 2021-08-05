@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import BottomCenter from '../img/BottomCenter.png'
 import BottomLeft from '../img/BottomLeft.png'
 import BottomRight from '../img/BottomRight.png'
+import Fade from 'react-reveal/Fade';
 
 
 function Home(props) {
@@ -55,8 +56,10 @@ function Home(props) {
                         <h4> the wedding of </h4>
                     <div className="line"></div>
                 </div>
-                <h1>Rania & Kemal</h1>
-                <h4>hello, <span>SAFIRA</span>. <br /> we are joyfully inviting you to our precious celebration.</h4>
+                <Fade>
+                  <h1>Rania & Kemal</h1>
+                </Fade>
+                <h4>hello, <Fade><span>SAFIRA</span></Fade>. <br /> we are joyfully inviting you to our precious celebration.</h4>
                 <div className='counter'>
                     {/* <p className="count">20 <span>Days</span></p>
                     <p className="count">10 <span>Hours</span></p>
