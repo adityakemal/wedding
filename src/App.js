@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Admin from './components/Admin';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
            {landingPage}
           </Route>
           <Route exact path="/admin">
-            <div>admin</div>
+            <Admin />
           </Route>
         </Switch>
     </Router>
