@@ -11,6 +11,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Admin from './components/Admin';
+import Login from './components/Login';
 
 function PrivateRoute({ children, ...rest }) {
   let auth = localStorage.getItem('auth')
@@ -52,6 +53,9 @@ function App() {
     <Switch>
           <Route exact path="/">
            {landingPage}
+          </Route>
+            <Route exact path="/login">
+           <Login />
           </Route>
           <PrivateRoute exact path="/admin">
             <Admin />
