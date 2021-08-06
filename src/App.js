@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import Admin from './components/Admin';
 import Login from './components/Login';
+import Confirmation from './components/Confirmation';
 
 function PrivateRoute({ children, ...rest }) {
   let auth = localStorage.getItem('auth')
@@ -20,7 +21,7 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        auth && token? (
+        auth && token ==='token12345'? (
           children
         ) : (
           <Redirect
@@ -42,6 +43,7 @@ function App() {
         <Home />
         <Schedule />
         <Destination />
+        <Confirmation />
       </div>
     )
   }

@@ -61,13 +61,13 @@ function Admin(props) {
     }
     
     return (
-        <div className='container py-5'>
+        <div className='container admin py-5'>
             <div className='mb-3' style={{display: 'flex', justifyContent: 'space-between', alignItems : 'center'}}>
                 <h1>ADMIN</h1>
                 <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
             </div>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-2">
+            <form onSubmit={handleSubmit} className='formSearch'>
+                <div >
                     <label className="form-label">Add new guest</label>
                     <input type="text" placeholder='Name' value={name} onChange={(e)=> setName(e.target.value)} className="form-control" name='password' />
                 </div>
@@ -75,7 +75,7 @@ function Admin(props) {
             </form>
             <br />
             <h2>List Guest</h2>
-            <div className="mb-1">
+            <div className="mb-2">
                 <input type="text" placeholder='Search by name..' onChange={(e)=> handleSearch(e.target.value)} className="form-control" name='password' />
             </div>
              <Table>
@@ -96,7 +96,7 @@ function Admin(props) {
                                 <Td>{res.name}</Td>
                                 <Td>
                                     <small>
-                                    {res.status === '0'? 'Belum Konfirmasi' : res.status === '1' ? <b className='text-success'>Hadir</b> : res.status === '2' ? <i className='text-danger'>Tidak bisa hadir</i> : null }
+                                    {res.status === '0'? 'Belum Konfirmasi' : res.status === '1' ? <b className='text-success'>Hadir <span>&#9989;</span></b> : res.status === '2' ? <i className='text-danger'>Tidak bisa hadir <span>&#10060;</span></i> : null }
                                     </small>
                                 </Td>
                                 <Td>{res.note}</Td>

@@ -4,7 +4,7 @@ import daun from '../img/daun.png'
 
 function Schedule(props) {
     return (
-        <div className='schedule'>
+        <div className='schedule' id="schedule">
             <div className="container">
                 <div className=" row w-100 g-0">
                     <div className="col-md-7 box p-0">

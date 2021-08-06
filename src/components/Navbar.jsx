@@ -4,10 +4,9 @@ function Navbar(props) {
     return (
         <div className='navbar'>
             <div className="container links">
-                <a href="#">DESTINATION</a>
-                <a href="#">SCHEDULE</a>
-                <a href="#">CONFIRMATION</a>
-                <a href="#">FAQ</a>
+                <a href="#destination">LOKASI</a>
+                <a href="#schedule">JADWAL</a>
+                <a href="#confirmation">KONFIRMASI</a>
             </div>
         </div>
     );

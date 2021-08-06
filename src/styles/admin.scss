@@ -1,0 +1,31 @@
+.admin{
+    .formSearch{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        div{
+            width: 85%;
+        }
+        button{
+            width: 14%;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .admin{
+        .formSearch{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            div{
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

@@ -20,7 +20,7 @@ function Login(props) {
             
         })
         promise.then(res=>{
-            window.location.reload()
+            window.location.href='/admin'
             console.log(res)
         }).catch(err=>{
             console.log(err)
@@ -28,8 +28,10 @@ function Login(props) {
         })
         e.preventDefault()
     }   
-    return !localStorage.getItem('auth') && !localStorage.getItem('token')?(
-        <div className='login'>
+    const token = localStorage.getItem('token')
+
+    return (
+        <div className='login container'>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label  className="form-label">Email address</label>
@@ -43,7 +45,7 @@ function Login(props) {
                 <button type="submit" className="btn btn-primary">Log in</button>
             </form>
         </div>
-    ) : <Redirect  to={{ pathname: "/admin",}}/>
+    ) 
 }
 
 export default Login;

@@ -32,6 +32,9 @@ table{
         border: 1px solid #aec6cf;
         text-transform: capitalize;
     } 
+    td{
+        font-weight: 300;
+    }
 }
 
 $brokenwhite: #f2f1ef;
@@ -45,3 +48,5 @@ $brown: #b1a6a4;
 @import './home.scss';
 @import './destination.scss';
 @import './schedule.scss';
+@import './confirmation.scss';
+@import './admin.scss';

@@ -5,7 +5,7 @@ import Lampung from '../img/lampung.png'
 
 function Destination(props) {
     return (
-        <div className='destination'>
+        <div className='destination' id='destination'>
             <h1>DESTINATION</h1>
             {/* <img className='lampungimg' src={Lampung} alt="city" /> */}
             <h5>Jl Srikresna No 82, Sawah Brebes, Tanjung Karang Timur, <br /> Bandar Lampung.</h5>
