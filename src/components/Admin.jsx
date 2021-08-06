@@ -74,7 +74,7 @@ function Admin(props) {
                 <button type="submit" className="btn btn-primary">Add Name</button>
             </form>
             <br />
-            <h2>List Guest</h2>
+            <h2>Guest list</h2>
             <div className="mb-2">
                 <input type="text" placeholder='Search by name..' onChange={(e)=> handleSearch(e.target.value)} className="form-control" name='password' />
             </div>
@@ -84,7 +84,7 @@ function Admin(props) {
                     <Th>No</Th>
                     <Th>Name</Th>
                     <Th>Status</Th>
-                    <Th>Note</Th>
+                    <Th>Notes</Th>
                     <Th>Action</Th>
                     </Tr>
                 </Thead>
