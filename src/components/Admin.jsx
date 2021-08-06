@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Trash2 } from 'react-feather';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 function Admin(props) {
     const [data, setData] = useState([])
+    const [filteredData, setfilteredData] = useState([])
     const [name, setName] = useState('')
 
     useEffect(()=>{
@@ -14,10 +16,17 @@ function Admin(props) {
     const getList = ()=>{
         axios.get('https://kemalrania.one/api').then(res=>{
             // console.log(res)
-            setData(res.data.data)
+            setData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
+            setfilteredData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
         }).catch(err=>{
             console.log(err)
         })
+    }
+
+    const handleSearch = (val)=>{
+        const filtered = data.filter(res=> res.name.includes(val.toLowerCase()) )
+        // console.log(filtered)
+        setfilteredData(filtered)
     }
 
     let handleSubmit=(e)=>{
@@ -66,6 +75,9 @@ function Admin(props) {
             </form>
             <br />
             <h2>List Guest</h2>
+            <div className="mb-1">
+                <input type="text" placeholder='Search by name..' onChange={(e)=> handleSearch(e.target.value)} className="form-control" name='password' />
+            </div>
              <Table>
                 <Thead>
                     <Tr>
@@ -78,13 +90,17 @@ function Admin(props) {
                 </Thead>
                 <Tbody>
                     {
-                        data.map((res,i)=>(
+                        filteredData.map((res,i)=>(
                             <Tr key={i}>
                                 <Td>{i +1}</Td>
                                 <Td>{res.name}</Td>
-                                <Td>{res.status === '0'? 'Belum Konfirmasi' : res.status === '1' ? 'Hadir' : res.status === '2' ? "Tidak bisa hadir" : null }</Td>
+                                <Td>
+                                    <small>
+                                    {res.status === '0'? 'Belum Konfirmasi' : res.status === '1' ? <b className='text-success'>Hadir</b> : res.status === '2' ? <i className='text-danger'>Tidak bisa hadir</i> : null }
+                                    </small>
+                                </Td>
                                 <Td>{res.note}</Td>
-                                <Td><button className='btn btn-danger' onClick={()=>handleDelete(res._id)}>Delete</button></Td>
+                                <Td><button className='btn btn-danger btn-sm ' onClick={()=>handleDelete(res._id)}>Delete </button></Td>
                             </Tr>
                         ))
                     }

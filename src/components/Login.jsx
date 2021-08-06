@@ -28,7 +28,7 @@ function Login(props) {
         })
         e.preventDefault()
     }   
-    return !localStorage.getItem('auth') && !localStorage.getItem('token') ?(
+    return !localStorage.getItem('auth') && !localStorage.getItem('token')?(
         <div className='login'>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
