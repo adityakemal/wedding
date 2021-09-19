@@ -2,8 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;1,300;1,400&family=Stalemate&display=swap');
 
 
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../font/StylishCalligraphyDemo.ttf) format('truetype');
+/* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
 body{
     font-family: 'Roboto Condensed', sans-serif;
+    // font-family: 'MyFont';
     font-weight: 400
 }
 
@@ -51,6 +59,7 @@ $brown: #b1a6a4;
 @import './navbar.scss';
 @import './home.scss';
 @import './destination.scss';
-@import './schedule.scss';
+@import './brides.scss';
 @import './confirmation.scss';
 @import './admin.scss';
+@import './schedule.scss';

@@ -37,8 +37,9 @@
         }
     }
     h1{
-        font-family: 'Stalemate', cursive;
-        font-size: 100px;
+        font-family: 'MyFont', cursive;
+        font-size: 75px;
+        margin-bottom: 25px;
         color: 	$black;
     }
     .counter{
@@ -93,9 +94,10 @@
             }
         }
         h1{
-            font-family: 'Stalemate', cursive;
-            font-size: 80px;
+            font-family: 'MyFont', cursive;
+            font-size: 40px;
             color: 	$black;
+            margin-bottom: 50px;
         }
         .counter{
             display: flex;

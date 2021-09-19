@@ -21,7 +21,7 @@ function Confirmation(props) {
     
     const getList = ()=>{
         axios.get('https://kemalrania.one/api').then(res=>{
-            // console.log(res)
+            console.log(res)
             setData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
             // setfilteredData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
         }).catch(err=>{

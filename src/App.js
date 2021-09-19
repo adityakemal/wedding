@@ -13,6 +13,7 @@ import {
 import Admin from './components/Admin';
 import Login from './components/Login';
 import Confirmation from './components/Confirmation';
+import Brides from './components/Brides';
 
 function PrivateRoute({ children, ...rest }) {
   let auth = localStorage.getItem('auth')
@@ -41,6 +42,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Home />
+        <Brides />
         <Schedule />
         <Destination />
         <Confirmation />
