@@ -54,7 +54,7 @@ function App() {
   return (
     <Router>
     <Switch>
-          <Route exact path="/">
+          <Route exact path="/for/:id">
            {landingPage}
           </Route>
             <Route exact path="/login">

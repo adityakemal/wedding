@@ -3,6 +3,31 @@ import React, { useEffect, useState } from 'react';
 import { Trash2 } from 'react-feather';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import Swal from 'sweetalert2'
+
+
+import {
+    // EmailShareButton,
+    // FacebookShareButton,
+    // HatenaShareButton,
+    // InstapaperShareButton,
+    // LineShareButton,
+    // LinkedinShareButton,
+    // LivejournalShareButton,
+    // MailruShareButton,
+    // OKShareButton,
+    // PinterestShareButton,
+    // PocketShareButton,
+    // RedditShareButton,
+    // TelegramShareButton,
+    // TumblrShareButton,
+    // TwitterShareButton,
+    // ViberShareButton,
+    // VKShareButton,
+    WhatsappShareButton,
+    WhatsappIcon
+    // WorkplaceShareButton
+  } from "react-share";
 
 function Admin(props) {
     const [data, setData] = useState([])
@@ -15,7 +40,7 @@ function Admin(props) {
     
     const getList = ()=>{
         axios.get('https://kemalrania.one/api').then(res=>{
-            // console.log(res)
+            console.log(res)
             setData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
             setfilteredData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
         }).catch(err=>{
@@ -38,6 +63,12 @@ function Admin(props) {
             console.log(res)
             getList()
             setName('')
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil menambahkan tamu',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }).catch(err=>{
             console.log(err)
         })
@@ -45,14 +76,34 @@ function Admin(props) {
     }
 
     let handleDelete=(id)=>{
+        Swal.fire({
+            title: 'Are you sure?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`https://kemalrania.one/api/${id}`).then(res=>{
+                    Swal.fire(
+                      'Deleted!',
+                      'Your file has been deleted.',
+                      'success'
+                    )
+                  getList()
+              }).catch(err=>{
+                  console.log(err)
+                  Swal.fire(
+                    'Delete Failed!',
+                    'Your file is not deleted!',
+                    'error'
+                  )
+              })
+            }
+          })
         // console.log(id)
-        axios.delete(`https://kemalrania.one/api/${id}`).then(res=>{
-            console.log(res)
-            getList()
-        }).catch(err=>{
-            console.log(err)
-            alert('gagal menghapus!')
-        })
     }
 
     const handleLogout = ()=>{
@@ -100,7 +151,14 @@ function Admin(props) {
                                     </small>
                                 </Td>
                                 <Td>{res.note}</Td>
-                                <Td><button className='btn btn-danger btn-sm ' onClick={()=>handleDelete(res._id)}>Delete </button></Td>
+                                <Td style={{display : 'flex', justifyContent: 'space-evenly'}}>
+                                    <button className='btn btn-danger btn-sm ' onClick={()=>handleDelete(res._id)}>Delete </button>
+                                    <WhatsappShareButton title={`To, ${res.name.toUpperCase()}`} url={`https://kemalrania.one/for/${res._id}`}>
+                                        <button className='btn btn-success btn-sm '>
+                                        Share <WhatsappIcon size={20} round={true}/>
+                                        </button>
+                                    </WhatsappShareButton>
+                                </Td>
                             </Tr>
                         ))
                     }

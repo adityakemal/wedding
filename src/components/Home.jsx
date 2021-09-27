@@ -5,9 +5,12 @@ import BottomCenter from '../img/BottomCenter.png'
 import BottomLeft from '../img/BottomLeft.png'
 import BottomRight from '../img/BottomRight.png'
 import Fade from 'react-reveal/Fade';
+import { withRouter } from "react-router";
+import axios from "axios";
 
 
 function Home(props) {
+  const { match, location, history } = props;
     const calculateTimeLeft = () => {
         let year = new Date().getFullYear();
         const difference = +new Date(`${year}-10-15`) - +new Date();
@@ -26,26 +29,37 @@ function Home(props) {
     };
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
     const [year] = useState(new Date().getFullYear());
+    const [guestName, setGuestName] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
           setTimeLeft(calculateTimeLeft());
         }, 1000);
-      });
+    });
     
-      const timerComponents = [];
+    const timerComponents = [];
 
-      Object.keys(timeLeft).forEach((interval) => {
-        // if (!timeLeft[interval]) {
-        //   return;
-        // }
-        timerComponents.push(
-          <p className='count'>
-            {timeLeft[interval]} <span>{interval}</span> 
-          </p>
-        );
-      });
-
+    Object.keys(timeLeft).forEach((interval) => {
+      // if (!timeLeft[interval]) {
+      //   return;
+      // }
+      timerComponents.push(
+        <p className='count'>
+          {timeLeft[interval]} <span>{interval}</span> 
+        </p>
+      );
+    });
+    useEffect(() => {
+      axios.get('https://kemalrania.one/api').then(res=>{
+        console.log(res.data.data)
+        const filGuest = res.data.data.filter(res=> res._id === match.params.id)
+        setGuestName(filGuest)
+        console.log(filGuest, 'fillguest')
+      }).catch(err=>{
+          console.log(err)
+      })
+      console.log(match.params.id)
+    }, [])
     return (
         <div className='home'
             style={{backgroundImage: `url(${BottomCenter}),url(${BottomLeft}) ,url(${BottomRight})`}}
@@ -59,7 +73,15 @@ function Home(props) {
                 <Fade>
                   <h1>Rania & Kemal</h1>
                 </Fade>
-                <h4>hello, <Fade><span>SAFIRA</span></Fade>. <br /> we are joyfully inviting you to our precious celebration.</h4>
+                <h4>hello,
+                     {
+                       guestName.map((res,i)=>
+                        <Fade key={i}>
+                          <span > {res.name}</span>
+                        </Fade>
+                         )
+                      }
+                . <br /> we are joyfully inviting you to our precious celebration.</h4>
                 <div className='counter'>
                     {/* <p className="count">20 <span>Days</span></p>
                     <p className="count">10 <span>Hours</span></p>
@@ -72,4 +94,4 @@ function Home(props) {
     );
 }
 
-export default Home;
+export default withRouter(Home);

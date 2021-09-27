@@ -1,61 +1,70 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { X } from 'react-feather';
+import { withRouter } from "react-router";
+import Swal from 'sweetalert2'
+
 
 function Confirmation(props) {
 
     const [data, setData] = useState([])
-    const [filteredData, setfilteredData] = useState([])
+    // const [filteredData, setfilteredData] = useState([])
     const [guest, setGuest] = useState({})
     const [status, setStatus] = useState('')
     const [note, setNote] = useState('')
-    const [modal, setModal] = useState(false)
-    const [filter, setFilter] = useState('')
+    // const [modal, setModal] = useState(false)
+    // const [filter, setFilter] = useState('')
 
     
     useEffect(()=>{
         getList()
     },[])
 
-    const searchRef = useRef(null);
+    // const searchRef = useRef(null);
     
     const getList = ()=>{
         axios.get('https://kemalrania.one/api').then(res=>{
             console.log(res)
-            setData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
+            // setData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
+            setData(res.data.data.filter(res=> res._id === props.match.params.id ) )
             // setfilteredData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
         }).catch(err=>{
             console.log(err)
         })
     }
 
-    const handleSearch = (val)=>{
-        if (val.length > 2) {
-            const filtered = data.filter(res=> res.name.includes(val.toLowerCase()) )
-            // console.log(filtered)
-            setfilteredData(filtered)
-        }else{
-            setfilteredData([])
-        }
-    }
+    // const handleSearch = (val)=>{
+    //     if (val.length > 2) {
+    //         const filtered = data.filter(res=> res.name.includes(val.toLowerCase()) )
+    //         // console.log(filtered)
+    //         setfilteredData(filtered)
+    //     }else{
+    //         setfilteredData([])
+    //     }
+    // }
 
-    let handleModal = ()=>{
-        setModal(!modal)
-        if (modal === true) {
-            searchRef.current.focus()
-        }
-    }
+    // let handleModal = ()=>{
+    //     setModal(!modal)
+    //     if (modal === true) {
+    //         searchRef.current.focus()
+    //     }
+    // }
 
     let handleSubmit = (e)=>{
         let data = {
             // id : guest._id,
-            name : guest.name,
+            // name : guest.name,
             status,
             note
         }
-        axios.patch(`https://kemalrania.one/api/${guest._id}`, data).then(res=>{
+        axios.patch(`https://kemalrania.one/api/${props.match.params.id}`, data).then(res=>{
             // console.log(res)
-            alert('berhasil konfirmasi kehadiran')
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil konfirmasi kehadiran',
+                showConfirmButton: false,
+                timer: 1500
+              })
             // setfilteredData(res.data.data.map(res=> ({...res, name: res.name.toLowerCase()}) ) )
         }).catch(err=>{
             console.log(err)
@@ -69,15 +78,20 @@ function Confirmation(props) {
             <div className="row">
                 <div className="col-md-4 ">
                     <h4>
-                    Silahkan cari nama anda dan konfirmasi kehadirannya, terimakasih <span >&#128578;</span>
+                    Silahkan konfirmasi kehadirannya, terimakasih <span >&#128578;</span>
                     </h4>
                 </div>
                 <div className="col-md-7">
                     <form onSubmit={handleSubmit} id='formStat'>
                         <div className="mb-2">
                             <label htmlFor="name">Nama</label>
-                            <input id='name' placeholder='Cari nama anda' className="form-select mb-2" onFocus={handleModal}  readOnly  value={guest.name} required />
                             {
+                                data.map((res,i)=>(
+                                    <input key={i} id='name' className="form-select mb-2" disabled type='text' value={res.name} required />
+                                ))
+                            }
+                            {/* <input id='name' placeholder='Cari nama anda' className="form-select mb-2" onFocus={handleModal}  readOnly  value={guest.name} required /> */}
+                            {/* {
                                 modal?
                                 <div className="searchmodal ">
                                     <div className="col-md-5 col-sm-12 box container">
@@ -94,11 +108,11 @@ function Confirmation(props) {
                                                     ))
                                                 }
                                             </ul>
-                                            {/* <button onChange={handleSearch} disabled={filter.length < 3} className='btn-large btn-warning btn' form='formSearch'>Search</button> */}
+                                            <button onChange={handleSearch} disabled={filter.length < 3} className='btn-large btn-warning btn' form='formSearch'>Search</button>
                                     </div>
                                 </div>
                                  : null
-                            }
+                            } */}
                         </div>
                         <div className="mb-2">
                             <label htmlFor="status">Status kehadiran</label>
@@ -120,4 +134,4 @@ function Confirmation(props) {
     );
 }
 
-export default Confirmation;
+export default withRouter(Confirmation);
