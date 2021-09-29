@@ -39,7 +39,7 @@ function Schedule(props) {
                         </div>
                         <h3>Minggu, 10 Oktober 2021</h3>
                         <div className="wrapdate">
-                            <div>
+                            <div className='border-end'>
                                 <h5>Akad</h5>
                                 <Lottie 
                                     options={{
@@ -50,12 +50,12 @@ function Schedule(props) {
                                         //   preserveAspectRatio: "xMidYMid slice"
                                         }
                                     }}
-                                    height={70}
-                                    width={70}
+                                    height={60}
+                                    width={40}
                                 />
                                 <h3>09:00 - 11:00</h3>
                             </div>
-                            <div>
+                            <div className='border-start'>
                                 <h5>Resepsi</h5>
                                 <Lottie 
                                     options={{
@@ -66,10 +66,10 @@ function Schedule(props) {
                                         //   preserveAspectRatio: "xMidYMid slice"
                                         }
                                     }}
-                                    height={70}
-                                    width={70}
+                                    height={60}
+                                    width={40}
                                 />
-                                <h3>11:00 - 16:00</h3>
+                                <h3>12:00 - 15:00</h3>
                             </div>
                         </div>
                     </div>

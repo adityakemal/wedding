@@ -69,6 +69,25 @@ $brown: #b1a6a4;
     }
   }
 
+//button stop music
+.butstop{
+    z-index: 1;
+    position: sticky;
+    bottom: 0px;
+    // right: 0px;
+    // padding-top: 10px;
+    // background-color: aqua;
+    text-align: right;
+    // position: relative;
+    svg{
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 20px;
+        padding: 5px;
+        cursor: pointer;
+    }
+}
+
 
 @import './navbar.scss';
 @import './home.scss';
