@@ -117,3 +117,18 @@
     
     }    
 }
+
+.alert_covid{
+    background-color: white;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    overflow: auto;
+    .box{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}

@@ -55,6 +55,20 @@ $pastelblue: #aec6cf;
 $black: #413f3d;
 $brown: #b1a6a4;
 
+.custom_modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000 !important;
+  }
+
+  // overide modal fade react material ui
+.modal_remove_outline {
+    &:focus {
+        outline: none;
+    }
+  }
+
 
 @import './navbar.scss';
 @import './home.scss';
