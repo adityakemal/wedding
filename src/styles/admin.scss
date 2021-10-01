@@ -11,6 +11,26 @@
             width: 14%;
         }
     }
+    h2{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        code{
+            font-size: 12px;
+            font-weight: bolder;
+            color: green;
+            letter-spacing: 2px;
+            span{
+                color: red;
+            }
+        }
+    }
+    .note{
+        p{
+
+            max-width: 500px;
+        }
+    }
 }
 
 @media screen and (max-width: 992px) {

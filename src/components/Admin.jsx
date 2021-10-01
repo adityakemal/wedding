@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Trash2 } from 'react-feather';
+import { RefreshCcw, Trash2 } from 'react-feather';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import Swal from 'sweetalert2'
@@ -125,7 +125,15 @@ function Admin(props) {
                 <button type="submit" className="btn btn-primary">Add Name</button>
             </form>
             <br />
-            <h2>Guest list</h2>
+            <h2>
+                Guest list 
+                <code> 
+                    *Hadir ({data.filter(res=> res.status === '1').length}) <br />
+                    <span> *Belum Konfirmasi ({data.filter(res=> res.status === '0').length})</span>
+                   
+                </code>
+                {/* <button className='btn btn-info' onClick={()=> getList()}><RefreshCcw color='white' size={20}/></button> */}
+            </h2>
             <div className="mb-2">
                 <input type="text" placeholder='Search by name..' onChange={(e)=> handleSearch(e.target.value)} className="form-control" name='password' />
             </div>
@@ -136,6 +144,7 @@ function Admin(props) {
                     <Th>Name</Th>
                     <Th>Status</Th>
                     <Th>Notes</Th>
+                    <Th>Url</Th>
                     <Th>Action</Th>
                     </Tr>
                 </Thead>
@@ -145,12 +154,13 @@ function Admin(props) {
                             <Tr key={i}>
                                 <Td>{i +1}</Td>
                                 <Td>{res.name}</Td>
-                                <Td>
+                                <Td >
                                     <small>
                                     {res.status === '0'? 'Belum Konfirmasi' : res.status === '1' ? <b className='text-success'>Hadir <span>&#9989;</span></b> : res.status === '2' ? <i className='text-danger'>Tidak bisa hadir <span>&#10060;</span></i> : null }
                                     </small>
                                 </Td>
-                                <Td>{res.note}</Td>
+                                <Td > {res.note}</Td>
+                                <Td><a href={`https://kemalrania.one/for/${res._id}`} target="_blank">Open link</a></Td>
                                 <Td style={{display : 'flex', justifyContent: 'space-evenly'}}>
                                     <button className='btn btn-danger btn-sm ' onClick={()=>handleDelete(res._id)}>Delete </button>
                                     <WhatsappShareButton title={`To, ${res.name.toUpperCase()}`} url={`https://kemalrania.one/for/${res._id}`}>
@@ -164,6 +174,14 @@ function Admin(props) {
                     }
                 </Tbody>
             </Table>
+            <div className="box mt-3">
+                <button className='btn btn-primary mb-3'>note preview</button>
+                {
+                    data.map((res,i)=>(
+                        <p key={i}>-To <b>{res.name.toUpperCase()}</b>, {`https://kemalrania.one/for/${res._id}`} </p>
+                    ))
+                }
+            </div>
         </div>
     );
 }

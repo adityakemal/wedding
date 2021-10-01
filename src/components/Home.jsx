@@ -8,6 +8,7 @@ import Fade from 'react-reveal/Fade';
 import { withRouter } from "react-router";
 import axios from "axios";
 import ModalTemplate from "../shared/ModalAlert";
+import Swal from "sweetalert2";
 
 
 
@@ -57,8 +58,18 @@ function Home(props) {
     useEffect(() => {
       axios.get('https://kemalrania.one/api').then(res=>{
         console.log(res.data.data)
+        
         const filGuest = res.data.data.filter(res=> res._id === match.params.id)
-        setGuestName(filGuest)
+        if (filGuest.length > 0) {
+          setGuestName(filGuest)
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Anda tidak berada di database tamu!',
+            // showConfirmButton: false,
+            // timer: 1500
+        })
+        }
         console.log(filGuest, 'fillguest')
       }).catch(err=>{
           console.log(err)
