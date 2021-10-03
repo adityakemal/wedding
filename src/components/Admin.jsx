@@ -126,10 +126,10 @@ function Admin(props) {
             </form>
             <br />
             <h2>
-                Guest list 
+                Guest list ({data.length})
                 <code> 
                     *Hadir ({data.filter(res=> res.status === '1').length}) <br />
-                    <span> *Belum Konfirmasi ({data.filter(res=> res.status === '0').length})</span>
+                    <span> *Tidak Hadir ({data.filter(res=> res.status === '2').length})</span>
                    
                 </code>
                 {/* <button className='btn btn-info' onClick={()=> getList()}><RefreshCcw color='white' size={20}/></button> */}
